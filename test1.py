@@ -6,8 +6,8 @@ def test_open():
         browser = p.webkit.launch(headless=False, slow_mo=1000)
         context = browser.new_context()
         page = context.new_page()
-        page.goto("http://www.uitestingplayground.com/")
+        response = page.goto("http://www.uitestingplayground.com/")
         import time
         time.sleep(5)
-        assert page.url == "http://www.uitestingplayground.com/"
+        assert response.status == 200
         browser.close()
